@@ -52,13 +52,13 @@ router.get('/:branch', async (req, res) => {
     }
 })
 
-router.post("/upload/:branch", async (req, res) => {
-    const link = req.link;
-    const branch = req.branch;
-    const subject = req.subject;
+router.post("/upload", async (req, res) => {
+    const link = req.body.link;
+    const branch = req.body.branch;
+    const subject = req.body.subject;
     const semester = await Semester.find({
         branch: branch,
-        name: req.semester
+        name: req.body.semester
     });
     semester = new Semester({
         name: semester,
